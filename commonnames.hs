@@ -2,7 +2,7 @@ import Data.List (nub, intersect)
 
 -- run the code
 main :: IO ()
-main = print (filter selector2 generator2)
+main = print (filter selector generator)
 
 -- ensures three different digits in a number
 n3D :: Int -> Bool
@@ -13,8 +13,8 @@ digits :: Int -> [Int]
 digits n = map (read . (:[])) (show n)
 
 --generates all 8-tuples of unique numbers from 10 to 31
-generator2 :: [(Int, Int, Int, Int, Int, Int, Int, Int)]
-generator2 = [(a1, a2, a3, a4, a5, a6, a7, a8) |
+generator :: [(Int, Int, Int, Int, Int, Int, Int, Int)]
+generator = [(a1, a2, a3, a4, a5, a6, a7, a8) |
     a1 <- ar,
     a2 <- ar, a2 /= a1,
     a3 <- ar, a3 /= a1, a3 /= a2,
@@ -28,8 +28,8 @@ generator2 = [(a1, a2, a3, a4, a5, a6, a7, a8) |
     ar = filter n3D [10..31]
     
 -- filters tuples based on relationships between their elements
-selector2 :: (Int, Int, Int, Int, Int, Int, Int, Int) -> Bool
-selector2 (a1, a2, a3, a4, a5, a6, a7, a8) =
+selector :: (Int, Int, Int, Int, Int, Int, Int, Int) -> Bool
+selector (a1, a2, a3, a4, a5, a6, a7, a8) =
   x [(a1, "alan"), (a2, "cary"), (a3, "james"), (a4, "lucy"), (a5, "nick"), (a6, "ricky"), (a7, "steve"), (a8, "victor")]
   where
     x [] = True
